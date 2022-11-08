@@ -109,137 +109,146 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Padding(
-        padding: EdgeInsets.all(18),
-        child: Column(
-          children: [
-            Row(
-              children: [
-                Text("Divisa  ",
-                    style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        color: Color.fromARGB(255, 21, 19, 18))),
-                DropdownButton(
-                    value: op1,
-                    items: item3,
-                    onChanged: (String? x) {
-                      setState(() {
-                        op1 = x.toString();
-                      });
-                    }),
-                VerticalDivider(),
-                VerticalDivider(),
-                VerticalDivider(),
-                Text("Pasar a:  ",
-                    style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        color: Color.fromARGB(255, 21, 19, 18))),
-                DropdownButton(
-                    value: op2,
-                    items: item3,
-                    onChanged: (String? x) {
-                      setState(() {
-                        op2 = x.toString();
-                      });
-                    }),
-              ],
-            ),
-            TextField(
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-              controller: txtorigen,
-              decoration: InputDecoration(
-                labelText: "Cantidad",
-                hintText: "0",
+          padding: EdgeInsets.all(18),
+          child: Column(
+            children: [
+              Row(
+                children: [
+                  Text("Divisa  ",
+                      style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          color: Color.fromARGB(255, 21, 19, 18))),
+                  DropdownButton(
+                      value: op1,
+                      items: item3,
+                      onChanged: (String? x) {
+                        setState(() {
+                          op1 = x.toString();
+                        });
+                      }),
+                  VerticalDivider(),
+                  VerticalDivider(),
+                  VerticalDivider(),
+                  Text("Pasar a:  ",
+                      style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          color: Color.fromARGB(255, 21, 19, 18))),
+                  DropdownButton(
+                      value: op2,
+                      items: item3,
+                      onChanged: (String? x) {
+                        setState(() {
+                          op2 = x.toString();
+                        });
+                      }),
+                ],
               ),
-            ),
-            Divider(),
-            TextField(
-              enabled: false,
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-              controller: txtdestino,
-              decoration:
-                  InputDecoration(labelText: "Resultado", hintText: "0"),
-            ),
-            Divider(),
-            Divider(),
-            Expanded(
-              child: GridView.builder(
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 3,
-                  ),
-                  itemCount: cal.length,
-                  itemBuilder: (BuildContext context, index) {
-                    return Card(
-                      color: cal[index].color,
-                      child: ListTile(
-                        title: Center(
-                          child: index > 9
-                              ? cal[index].icono1
-                              : Text(
-                                  cal[index].titulo,
-                                  style: TextStyle(
-                                      fontSize: 30,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.white),
-                                ),
-                        ),
-                        onTap: () {
-                          print(cal[index].titulo);
-                          if (index < 10) {
-                            txtorigen.text = txtorigen.text + cal[index].titulo;
-                          } else if (index == 10) {
-                            txtorigen.text = "";
-                            txtdestino.text = "";
-                          } else {
-                            if (op1 == "USD" && op2 == "COP") {
-                              var result =
-                                  (double.parse(txtorigen.text) * 5000);
-                              NumberFormat f =
-                                  new NumberFormat("#,##0.000", "es_COP");
-                              txtdestino.text = (f.format(result)).toString();
-                            } else if (op1 == "COP" && op2 == "USD") {
-                              var result =
-                                  (double.parse(txtorigen.text) / 5000);
-                              NumberFormat f =
-                                  new NumberFormat("#,##0.000", "es_USD");
-                              txtdestino.text = (f.format(result)).toString();
-                            } else if (op1 == "EUR" && op2 == "COP") {
-                              var result =
-                                  (double.parse(txtorigen.text) * 5050);
-                              NumberFormat f =
-                                  new NumberFormat("#,##0.000", "es_COP");
-                              txtdestino.text = (f.format(result)).toString();
-                            } else if (op1 == "COP" && op2 == "EUR") {
-                              var result =
-                                  (double.parse(txtorigen.text) / 5050);
-                              NumberFormat f =
-                                  new NumberFormat("#,##0.000", "es_EUR");
-                              txtdestino.text = (f.format(result)).toString();
-                            } else if (op1 == "EUR" && op2 == "USD") {
-                              var result =
-                                  (double.parse(txtorigen.text) * 0.99);
-                              NumberFormat f =
-                                  new NumberFormat("#,##0.000", "es_USD");
-                              txtdestino.text = (f.format(result)).toString();
-                            } else if (op1 == "USD" && op2 == "EUR") {
-                              var result =
-                                  (double.parse(txtorigen.text) / 5050);
-                              NumberFormat f =
-                                  new NumberFormat("#,##0.000", "es_EUR");
-                              txtdestino.text = (f.format(result)).toString();
-                            } else {
-                              txtdestino.text = txtorigen.text;
-                            }
-                          }
-                        },
+              TextField(
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                controller: txtorigen,
+                decoration:
+                    InputDecoration(labelText: "Cantidad", hintText: "0"),
+                textAlign: TextAlign.right,
+              ),
+              Divider(),
+              TextField(
+                enabled: false,
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                controller: txtdestino,
+                decoration:
+                    InputDecoration(labelText: "Resultado", hintText: "0"),
+                textAlign: TextAlign.right,
+              ),
+              Divider(),
+              Divider(),
+              Expanded(
+                  child: GridView.builder(
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 3,
                       ),
-                    );
-                  }),
-            )
-          ],
-        ),
-      ),
+                      itemCount: cal.length,
+                      itemBuilder: (BuildContext context, index) {
+                        return Card(
+                          color: cal[index].color,
+                          child: ListTile(
+                            title: Center(
+                              child: index > 9
+                                  ? cal[index].icono1
+                                  : Text(
+                                      cal[index].titulo,
+                                      style: TextStyle(
+                                          fontSize: 30,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.white),
+                                    ),
+                            ),
+                            onTap: () {
+                              print(cal[index].titulo);
+                              if (index < 10) {
+                                txtorigen.text =
+                                    txtorigen.text + cal[index].titulo;
+                              } else if (index == 10) {
+                                txtorigen.text = "";
+                                txtdestino.text = "";
+                              } else {
+                                if (op1 == "USD" && op2 == "COP") {
+                                  var result =
+                                      (double.parse(txtorigen.text) * 5000);
+                                  NumberFormat f = new NumberFormat(
+                                      "#,##0.00 COP", "es_COP");
+                                  txtdestino.text =
+                                      (f.format(result)).toString();
+                                } else if (op1 == "COP" && op2 == "USD") {
+                                  var result =
+                                      (double.parse(txtorigen.text) / 5000);
+                                  NumberFormat f =
+                                      new NumberFormat("#,##0.00 USD", "en_US");
+                                  txtdestino.text =
+                                      (f.format(result)).toString();
+                                } else if (op1 == "EUR" && op2 == "COP") {
+                                  var result =
+                                      (double.parse(txtorigen.text) * 5050);
+                                  NumberFormat f = new NumberFormat(
+                                      "#,##0.00 COP", "es_COP");
+                                  txtdestino.text =
+                                      (f.format(result)).toString();
+                                } else if (op1 == "COP" && op2 == "EUR") {
+                                  var result =
+                                      (double.parse(txtorigen.text) / 5050);
+                                  NumberFormat f =
+                                      new NumberFormat("#,##0.00 EUR", "es_EU");
+                                  txtdestino.text =
+                                      (f.format(result)).toString();
+                                } else if (op1 == "EUR" && op2 == "USD") {
+                                  var result =
+                                      (double.parse(txtorigen.text) * 0.99);
+                                  NumberFormat f =
+                                      new NumberFormat("#,##0.00 USD", "en_US");
+                                  txtdestino.text =
+                                      (f.format(result)).toString();
+                                } else if (op1 == "USD" && op2 == "EUR") {
+                                  var result =
+                                      (double.parse(txtorigen.text) / 0.998);
+                                  NumberFormat f = new NumberFormat(
+                                      "#,##0.00 EUR", "es_EUR");
+                                  txtdestino.text =
+                                      (f.format(result)).toString();
+                                  //txtdestino.text =
+                                  //(double.parse(txtorigen.text) / 5000)
+                                  //.toStringAsFixed(4);
+                                } else {
+                                  txtdestino.text = txtorigen.text;
+                                }
+                              }
+                            },
+                          ),
+                        );
+                      }))
+            ],
+          )),
     );
   }
 }
