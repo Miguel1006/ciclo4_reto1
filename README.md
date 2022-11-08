@@ -2,6 +2,7 @@
 #### NCR 2286 - GRUPO: 09
 
 
-https://user-images.githubusercontent.com/113841820/200607775-b0085435-9e9b-4a6c-aad9-cb6f9469c15b.mp4
+
+https://user-images.githubusercontent.com/113841820/200609060-f0d28245-fcab-4623-bdc5-abeefa821c60.mp4
 
 
