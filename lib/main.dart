@@ -152,6 +152,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 labelText: "Cantidad",
                 hintText: "0",
               ),
+              textAlign: TextAlign.right,
             ),
             Divider(),
             TextField(
@@ -160,6 +161,7 @@ class _MyHomePageState extends State<MyHomePage> {
               controller: txtdestino,
               decoration:
                   InputDecoration(labelText: "Resultado", hintText: "0"),
+              textAlign: TextAlign.right,
             ),
             Divider(),
             Divider(),
@@ -196,37 +198,37 @@ class _MyHomePageState extends State<MyHomePage> {
                               var result =
                                   (double.parse(txtorigen.text) * 5000);
                               NumberFormat f =
-                                  new NumberFormat("#,##0.000", "es_COP");
+                                  new NumberFormat("#,##0.00", "es_COP");
                               txtdestino.text = (f.format(result)).toString();
                             } else if (op1 == "COP" && op2 == "USD") {
                               var result =
                                   (double.parse(txtorigen.text) / 5000);
                               NumberFormat f =
-                                  new NumberFormat("#,##0.000", "es_USD");
+                                  new NumberFormat("#,##0.00", "es_USD");
                               txtdestino.text = (f.format(result)).toString();
                             } else if (op1 == "EUR" && op2 == "COP") {
                               var result =
                                   (double.parse(txtorigen.text) * 5050);
                               NumberFormat f =
-                                  new NumberFormat("#,##0.000", "es_COP");
+                                  new NumberFormat("#,##0.00", "es_COP");
                               txtdestino.text = (f.format(result)).toString();
                             } else if (op1 == "COP" && op2 == "EUR") {
                               var result =
                                   (double.parse(txtorigen.text) / 5050);
                               NumberFormat f =
-                                  new NumberFormat("#,##0.000", "es_EUR");
+                                  new NumberFormat("#,##0.00", "es_EUR");
                               txtdestino.text = (f.format(result)).toString();
                             } else if (op1 == "EUR" && op2 == "USD") {
                               var result =
                                   (double.parse(txtorigen.text) * 0.99);
                               NumberFormat f =
-                                  new NumberFormat("#,##0.000", "es_USD");
+                                  new NumberFormat("#,##0.00", "es_USD");
                               txtdestino.text = (f.format(result)).toString();
                             } else if (op1 == "USD" && op2 == "EUR") {
                               var result =
-                                  (double.parse(txtorigen.text) / 5050);
+                                  (double.parse(txtorigen.text) / 0.998);
                               NumberFormat f =
-                                  new NumberFormat("#,##0.000", "es_EUR");
+                                  new NumberFormat("#,##0.00", "es_EUR");
                               txtdestino.text = (f.format(result)).toString();
                             } else {
                               txtdestino.text = txtorigen.text;
